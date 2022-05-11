@@ -1,9 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Form = () => {
+// Accessing props like setinputText
+const Form = ({setInputText}) => {
+
+     const inputTextHandler = (e)=>{
+        //  
+        //  console.log(e);
+
+        // It will give target like where it is targeting in html
+        // console.log(e.target);
+
+        // It will give value of that target
+        console.log(e.target.value);
+        setInputText(e.target.value);
+       }
+
     return(
         <form>
-            <input type="text" className="todo-input" />
+            <input onChange={inputTextHandler} type="text" className="todo-input" />
             <button className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
