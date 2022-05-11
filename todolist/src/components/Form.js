@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 // Accessing props like setinputText
-const Form = ({setInputText}) => {
+const Form = ({todos,setTodos,inputText,setInputText}) => {
 
      const inputTextHandler = (e)=>{
         //  
@@ -15,10 +15,28 @@ const Form = ({setInputText}) => {
         setInputText(e.target.value);
        }
 
+       const submitTodoHandler=(e)=>{
+            // The button we made after clicking we refreshing and we don't want that 
+            // So we use below code which prevent default behaviour. 
+           e.preventDefault();
+            
+           setTodos([
+               ...todos, {text:inputText,completed:false,id:Math.random()*1000}
+           ]);
+        //    It will reset the setInputText in console but it will not reset in ui
+           setInputText("");
+       };
+
     return(
         <form>
-            <input onChange={inputTextHandler} type="text" className="todo-input" />
-            <button className="todo-button" type="submit">
+            <input 
+            // Value here will help refresh when we use setInputText and set it to empty quotes afer passing in todo (line 27)
+            // it will give the same value to input and replace our written quote with empty quotes
+                value={inputText}
+                onChange={inputTextHandler} 
+                type="text" 
+                className="todo-input" />
+            <button onClick={submitTodoHandler } className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
