@@ -21,6 +21,8 @@ const Form = ({todos,setTodos,inputText,setInputText}) => {
            e.preventDefault();
             
            setTodos([
+            //    Here we are giving id because react does not know how to re-render list after deleting a certain item
+            // That's why it need a id so that it can delete it.
                ...todos, {text:inputText,completed:false,id:Math.random()*1000}
            ]);
         //    It will reset the setInputText in console but it will not reset in ui

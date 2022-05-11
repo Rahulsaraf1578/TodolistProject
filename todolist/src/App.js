@@ -16,7 +16,7 @@ function App() {
 
         {/* We are passing set input text to set the new text*/}
         <Form todos={todos} setTodos={ setTodos} inputText={inputText} setInputText={setInputText}/>
-        <TodoList />
+        <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   );
 }

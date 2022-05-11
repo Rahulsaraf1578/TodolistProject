@@ -3,11 +3,14 @@ import Todo from "./Todo";
 // Import components
 
 
-const TodoList = () =>{
+const TodoList = ({todos,setTodos}) =>{
+    // console.log(todos); 
     return(
         <div className="todo-container">
             <ul className="todo-list">
-                <Todo/>
+                {todos.map(todo=>(
+                    <Todo todo={todo} todos={todos} setTodos={setTodos} key = {todo.id} text = {todo.text} />
+                ))}
             </ul>
         </div>
     )
